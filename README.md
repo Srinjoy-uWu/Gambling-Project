@@ -1,28 +1,30 @@
 ﻿# Slot Machine - Node.js CLI Game
 
-A terminal-based slot machine game built with JavaScript and Node.js, following along with a full tutorial. The game runs entirely in the command line and simulates a real slot machine with deposits, betting lines, spinning reels, and payouts.
+A terminal-based slot machine game built with JavaScript and Node.js. The game runs entirely in the command line and simulates a real slot machine with deposits, betting lines, spinning reels, and payouts.
 
 ---
 
 ## About
 
-This project is being built step-by-step as a learning exercise to practice:
+This project was built as a learning exercise to practice:
 - Core JavaScript concepts (functions, loops, conditionals, objects, arrays)
 - Node.js basics and working with npm packages
 - Arrow functions and modern JS syntax
 - Input validation and game loop logic
 
+Built by following: JavaScript Full Course for Beginners
+https://www.youtube.com/watch?v=E3XxeE7NF30
+
 ---
 
-## Planned Game Flow
+## How to Play
 
-1. **Deposit** - Player enters a starting balance
-2. **Choose Lines** - Player selects how many lines to bet on (1-3)
-3. **Place Bet** - Player bets an amount per line (cannot exceed balance)
-4. **Spin** - Slot machine randomly fills a 3x3 grid with symbols
-5. **Check Win** - Check each bet line for matching symbols
-6. **Payout** - Award winnings based on symbol value x bet
-7. **Play Again** - Loop until the player runs out of money or quits
+1. **Deposit** - Enter a starting balance
+2. **Choose Lines** - Select how many lines to bet on (1, 2, or 3)
+3. **Place Bet** - Enter your bet amount per line (cannot exceed balance)
+4. **Spin** - The machine fills a 3x3 grid with random symbols
+5. **Result** - Matching symbols on a bet line pay out based on symbol value
+6. **Play Again** - Keep spinning until you cash out or run out of money
 
 ---
 
@@ -39,26 +41,23 @@ Rarer symbols appear less often and pay out more:
 | D      | 8   | 2x  |
 
 ### Grid
-- **3 rows x 3 columns**
-- A win occurs when all symbols on a bet line match
+- 3 rows x 3 columns
+- A win occurs when all symbols across a bet line match
 
 ---
 
-## What Has Been Built So Far
+## Functions
 
-### deposit()
-Prompts the user to enter a deposit amount. Validates that the input is a positive number using `parseFloat` and `isNaN`. Loops until a valid amount is entered.
-
-### getNumberofLines()
-Prompts the user to choose how many lines to bet on (between 1 and 3). Validates the range and loops on invalid input.
-
-### getBet(balance)
-Prompts the user for a bet amount per line. Validates that it is a positive number and does not exceed the current balance.
-
-### spin() - in progress
-Will randomly populate a 3x3 reel grid by:
-1. Building a flat array of all symbols (weighted by count)
-2. Randomly picking symbols for each column without replacement
+| Function | Description |
+|---|---|
+| `deposit()` | Prompts and validates the starting deposit amount |
+| `getNumberofLines()` | Prompts and validates number of lines to bet (1-3) |
+| `getBet(balance)` | Prompts and validates the bet amount per line |
+| `spin()` | Builds a weighted symbol pool and randomly fills a 3x3 reel grid |
+| `transpose(reels)` | Converts column-based reel data into rows for display |
+| `printRows(rows)` | Prints each row in A | B | C format to the console |
+| `getWinnings(rows, bet, lines)` | Checks bet lines for matching symbols and calculates payout |
+| `game()` | Main game loop - ties everything together |
 
 ---
 
@@ -98,27 +97,28 @@ node script.js
 
 ---
 
+## Example Session
+
+```
+Enter a deposit amount: 100
+You have a balance of $100
+Enter the number of lines to bet on (1-3): 2
+Enter the amount to bet on: 10
+D | C | C
+D | D | D
+D | C | B
+You won, $20
+Do you want to play again (y/n): y
+...
+```
+
+---
+
 ## Project Structure
 
 ```
 Gambling-Project/
-|-- script.js       # Main game logic
+|-- script.js       # Complete game logic
 |-- package.json    # Project config and dependencies
 |-- README.md       # You are here
 ```
-
----
-
-## Learning Reference
-
-Built by following: JavaScript Full Course for Beginners
-https://www.youtube.com/watch?v=E3XxeE7NF30
-
----
-
-## Coming Soon
-
-- [ ] Complete the spin() function
-- [ ] Implement win-checking logic
-- [ ] Calculate and display winnings
-- [ ] Full game loop with play-again prompt
