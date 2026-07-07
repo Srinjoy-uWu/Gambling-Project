@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Out-Pass Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Hostel Out-Pass Form</h2>
+        <form id="outpassForm">
+            <div class="form-group">
+                <label for="address">Destination Address:</label>
+                <textarea id="address" name="address" placeholder="Where are you going?" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="leaveDate">Leave Date:</label>
+                <input type="date" id="leaveDate" name="leaveDate" required>
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <div class="form-group" style="flex: 1;">
+                    <label for="outTime">Out Time:</label>
+                    <input type="time" id="outTime" name="outTime" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label for="inTime">Expected In Time:</label>
+                    <input type="time" id="inTime" name="inTime" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="days">No. of Days for Leave:</label>
+                <input type="number" id="days" name="days" min="1" placeholder="e.g., 2" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason for Leave:</label>
+                <textarea id="reason" name="reason" placeholder="Explain why you need the out-pass..." required></textarea>
+            </div>
+            <button type="submit" id="submitBtn">Submit Request</button>
+        </form>
+
+        <div id="statusMessage" class="status-container">
+            <span id="statusLight" class="light"></span>
+            <span id="statusText"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
